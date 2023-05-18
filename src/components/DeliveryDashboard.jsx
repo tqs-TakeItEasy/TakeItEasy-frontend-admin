@@ -89,7 +89,11 @@ function DeliveryDashboard() {
     ]
     
     return (
-        <Table columns={columns} dataSource={dataSource} />
+        <Table 
+            columns={columns}
+            dataSource={dataSource} 
+            style={{ color: '#D3CEDF' }}
+        />
     )
 }
 
