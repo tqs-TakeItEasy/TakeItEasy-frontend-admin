@@ -42,56 +42,58 @@ function DeliveryDashboard() {
     // dummy data
     const dataSource = [
         {
-            deliveryId: 1,
-            owner: 'John Doe',
-            pickUpPoint: 'ABC Street',
-            status: 'Picked Up',
-            registryDate: '2023-05-15',
-            deliveryDate: '2023-05-16',
-            pickUpDate: '2023-05-14',
+          deliveryId: 1,
+          owner: 'Walter White',
+          pickUpPoint: '308 Negra Arroyo Lane',
+          status: 'Completed',
+          registryDate: '2008-01-20',
+          deliveryDate: '2008-02-10',
+          pickUpDate: '2008-01-25',
         },
         {
-            deliveryId: 2,
-            owner: 'Jane Smith',
-            pickUpPoint: 'XYZ Avenue',
-            status: 'In Transit',
-            registryDate: '2023-05-10',
-            deliveryDate: '----',
-            pickUpDate: '----',
+          deliveryId: 2,
+          owner: 'Gustavo Fring',
+          pickUpPoint: 'Los Pollos Hermanos',
+          status: 'Completed',
+          registryDate: '2010-03-12',
+          deliveryDate: '2010-03-28',
+          pickUpDate: '2010-03-15',
         },
         {
-            deliveryId: 3,
-            owner: 'Mike Johnson',
-            pickUpPoint: '123 Lane',
-            status: 'Pending Pickup',
-            registryDate: '2023-05-12',
-            deliveryDate: '2023-05-19',
-            pickUpDate: '----',
+          deliveryId: 3,
+          owner: 'Jesse Pinkman',
+          pickUpPoint: 'RV',
+          status: 'Pending Pick Up',
+          registryDate: '2012-07-05',
+          deliveryDate: '2012-07-06',
+          pickUpDate: '----',
         },
         {
-            deliveryId: 4,
-            owner: 'Sarah Williams',
-            pickUpPoint: '456 Road',
-            status: 'In Transit',
-            registryDate: '2023-05-13',
-            deliveryDate: '----',
-            pickUpDate: '----',
+          deliveryId: 4,
+          owner: 'Hank Schrader',
+          pickUpPoint: 'DEA Office',
+          status: 'Cancelled',
+          registryDate: '2009-09-18',
+          deliveryDate: '----',
+          pickUpDate: '----',
         },
         {
-            deliveryId: 5,
-            owner: 'Michael Brown',
-            pickUpPoint: '789 Avenue',
-            status: 'Delivered',
-            registryDate: '2023-05-11',
-            deliveryDate: '2023-05-18',
-            pickUpDate: '2023-05-10',
+          deliveryId: 5,
+          owner: 'Skyler White',
+          pickUpPoint: 'A1A Car Wash',
+          status: 'In Progress',
+          registryDate: '2011-05-02',
+          deliveryDate: '----',
+          pickUpDate: '----',
         },
-    ]
+      ];
+      
     
     return (
         <Table 
             columns={columns}
             dataSource={dataSource} 
+            pagination={false}
             style={{ color: '#D3CEDF' }}
         />
     )
