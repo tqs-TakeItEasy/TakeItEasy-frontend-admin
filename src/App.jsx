@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Layout, Menu } from 'antd';
 import {
-  UserOutlined,
+  HomeOutlined,
   LaptopOutlined,
   ContainerOutlined,
   EnvironmentOutlined,
@@ -27,14 +27,17 @@ function App() {
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
-      <Sider width={'10vw'} style={{ background: '#748DA6' }}>
-        <img src="/takeiteasy.png" alt="TakeItEasy" width={'100%'}/>
+      <Sider width={'300'} style={{ background: '#748DA6' }}>
         <Menu
           mode="inline"
           selectedKeys={[selectedItem]}
           onClick={handleMenuClick}
           style={{ background: '#748DA6', color: '#eeeeee', height: '100%' }}
         >
+          <img src="/takeiteasy.png" alt="logo" style={{ width: '100%', padding: '30px' }} />
+          <Menu.Item key="homepage" icon={<HomeOutlined />}>
+            Home Page
+          </Menu.Item>
           <Menu.Item key="deliveries" icon={<ContainerOutlined />}>
             Deliveries
           </Menu.Item>
@@ -50,8 +53,10 @@ function App() {
           </Menu.Item>
         </Menu>
       </Sider>
-      <Layout>
-        <Content style={{ background: '#9CB4CC', padding: '4rem' }}>
+      <Layout style={{ background: '#9CB4CC' }}>
+        <Content style={{
+          margin: '48px 32px',
+        }}>
           {selectedItem === 'homepage' && <HomePage />}
           {selectedItem === 'deliveries' && <DeliveryDashboard />}
           {selectedItem === 'pups' && <h1>Option 1 Content</h1>}

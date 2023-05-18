@@ -10,11 +10,14 @@ const HomePage = () => {
       style={{
         display: 'flex',
         justifyContent: 'center',
+        flexDirection: 'column',
         alignItems: 'center',
-        minHeight: '60vh',
+        minHeight: '80vh',
         padding: '40px',
         border: '2px solid #e8e8e8',
         borderRadius: '16px',
+        // backgroundImage: 'url("/network.png")',
+        backgroundSize: 'cover',
       }}
     >
       <div style={{ textAlign: 'center' }}>

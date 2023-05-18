@@ -1,4 +1,6 @@
-import { Table } from 'antd'
+import { Table, Typography } from 'antd'
+
+const { Title, Paragraph } = Typography;
 
 function DeliveryDashboard() {
     const columns = [
@@ -88,14 +90,15 @@ function DeliveryDashboard() {
         },
       ];
       
-    
     return (
+      <div>
+        <Title level={2}>Deliveries</Title>  
         <Table 
             columns={columns}
             dataSource={dataSource} 
             pagination={false}
-            style={{ color: '#D3CEDF' }}
         />
+      </div>
     )
 }
 
