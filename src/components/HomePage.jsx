@@ -6,20 +6,6 @@ const { Title, Paragraph } = Typography;
 
 const HomePage = () => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        flexDirection: 'column',
-        alignItems: 'center',
-        minHeight: '80vh',
-        padding: '40px',
-        border: '2px solid #e8e8e8',
-        borderRadius: '16px',
-        // backgroundImage: 'url("/network.png")',
-        backgroundSize: 'cover',
-      }}
-    >
       <div style={{ textAlign: 'center' }}>
         <Title>Welcome to Take It Easy</Title>
         <Paragraph>
@@ -31,7 +17,6 @@ const HomePage = () => {
           Get Started
         </Button>
       </div>
-    </div>
   );
 };
 

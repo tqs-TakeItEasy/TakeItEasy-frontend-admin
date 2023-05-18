@@ -1,4 +1,10 @@
+import { useState, useEffect } from 'react';
+import axios from 'axios'
 import { Table, Typography } from 'antd'
+
+const client = axios.create({
+    baseURL: 'http://localhost:8080/api/v1/',
+});
 
 const { Title, Paragraph } = Typography;
 
@@ -90,6 +96,16 @@ function DeliveryDashboard() {
         },
       ];
       
+    const [data, setData] = useState([]);
+    const fetchData = async () => {
+        const response = await client.get('/deliveries');
+        setData(response.data);
+    };
+
+    useEffect(() => {
+      fetchData();
+    }, []);
+    
     return (
       <div>
         <Title level={2}>Deliveries</Title>  

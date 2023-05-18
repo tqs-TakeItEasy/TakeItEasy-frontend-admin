@@ -53,9 +53,16 @@ function App() {
           </Menu.Item>
         </Menu>
       </Sider>
-      <Layout style={{ background: '#9CB4CC' }}>
+      <Layout style={{ 
+        background: '#9CB4CC',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh',
+      }}>
         <Content style={{
-          margin: '48px 32px',
+          margin: '24px 16px',
+          minWidth: '80%',
         }}>
           {selectedItem === 'homepage' && <HomePage />}
           {selectedItem === 'deliveries' && <DeliveryDashboard />}
