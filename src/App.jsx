@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import { Layout, Menu } from 'antd';
+
 import {
   HomeOutlined,
-  LaptopOutlined,
   ContainerOutlined,
   EnvironmentOutlined,
   ProjectOutlined,
 } from '@ant-design/icons';
 
-import HomePage from './components/HomePage'; 
+import HomePage from './components/HomePage';
 import DeliveryDashboard from './components/DeliveryDashboard'
 import PickUpPointsDashboard from './components/PickUpPointsDashboard';
 import SellersDashboard from './components/SellersDashboard';
@@ -17,8 +17,7 @@ import './App.css'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 
-const { SubMenu } = Menu;
-const { Sider, Content } = Layout;
+const { Header, Content, Footer } = Layout;
 
 function App() {
   const [selectedItem, setSelectedItem] = useState('homepage');
@@ -27,18 +26,22 @@ function App() {
     setSelectedItem(item.key);
   };
 
-
-
   return (
     <Layout style={{ minHeight: '100vh' }}>
-      <Sider width={'300'} style={{ background: '#748DA6' }}>
+      <Header
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <img src="/takeiteasy_invert.png" alt="logo" height={"80%"} style={{ paddingRight: "30px" }} />
         <Menu
-          mode="inline"
+          theme="dark"
+          mode="horizontal"
           selectedKeys={[selectedItem]}
           onClick={handleMenuClick}
-          style={{ background: '#748DA6', color: '#eeeeee', height: '100%' }}
+          minWidth="80%"
         >
-          <img src="/takeiteasy.png" alt="logo" style={{ width: '100%', padding: '30px' }} />
           <Menu.Item key="homepage" icon={<HomeOutlined />}>
             Home Page
           </Menu.Item>
@@ -51,34 +54,24 @@ function App() {
           <Menu.Item key="esellers" icon={<EnvironmentOutlined />}>
             eSellers
           </Menu.Item>
-          <SubMenu key="sub1" icon={<LaptopOutlined />} title="Submenu 1">
-            <Menu.Item key="option1">Option 1</Menu.Item>
-            <Menu.Item key="option2">Option 2</Menu.Item>
-          </SubMenu>
           <Menu.Item key="stats" icon={<ProjectOutlined />}>
             Stats (?)
           </Menu.Item>
         </Menu>
-      </Sider>
-      <Layout style={{ 
-        background: '#9CB4CC',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100vh',
-      }}>
-        <Content style={{
-          minWidth: '80%',
-        }}>
-          {selectedItem === 'homepage' && <HomePage />}
-          {selectedItem === 'deliveries' && <DeliveryDashboard />}
-          {selectedItem === 'pups' && <PickUpPointsDashboard />}
-          {selectedItem === 'esellers' && <SellersDashboard />}
-          {selectedItem === 'stats' && <h1>Stats :)</h1>}
-          {selectedItem === 'option1' && <h1>Option 1 Content</h1>}
-          {selectedItem === 'option2' && <h1>Option 2 Content</h1>}
-        </Content>
-      </Layout>
+
+      </Header>
+      <Content
+        style={{
+          background: '#9CB4CC',
+          padding: '30px 50px',
+        }}
+      >
+        {selectedItem === 'homepage' && <HomePage />}
+        {selectedItem === 'deliveries' && <DeliveryDashboard />}
+        {selectedItem === 'pups' && <PickUpPointsDashboard />}
+        {selectedItem === 'esellers' && <SellersDashboard />}
+        {selectedItem === 'stats' && <h1>Stats :o</h1>}
+      </Content>
     </Layout>
   )
 }

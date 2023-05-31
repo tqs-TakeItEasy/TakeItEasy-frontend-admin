@@ -1,4 +1,5 @@
 import { Button, Modal, Form, Input } from 'antd';
+import axios from 'axios';
 import { useState } from 'react';
 
 function NewPickUpPoint() {
@@ -12,12 +13,12 @@ function NewPickUpPoint() {
 
     const handleOk = (values) => {
         console.log('Success:', values);
-        setModalText('The modal will be closed after two seconds');
         setConfirmLoading(true);
-        setTimeout(() => {
-            setOpen(false);
-            setConfirmLoading(false);
-        }, 2000);
+        
+        values["company"] = "TakeItEasy"
+        axios.post('http://localhost:8080/api/v1/pickuppoints/add/', values);
+        setConfirmLoading(false);
+        setOpen(false);
     };
 
     const onFinishFailed = (errorInfo) => {
