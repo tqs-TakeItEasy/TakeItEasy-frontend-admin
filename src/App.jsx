@@ -8,8 +8,10 @@ import {
   ProjectOutlined,
 } from '@ant-design/icons';
 
+import HomePage from './components/HomePage'; 
 import DeliveryDashboard from './components/DeliveryDashboard'
-import HomePage from './components/HomePage';
+import PickUpPointsDashboard from './components/PickUpPointsDashboard';
+import SellersDashboard from './components/SellersDashboard';
 
 import './App.css'
 // import reactLogo from './assets/react.svg'
@@ -24,6 +26,8 @@ function App() {
   const handleMenuClick = (item) => {
     setSelectedItem(item.key);
   };
+
+
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -42,7 +46,10 @@ function App() {
             Deliveries
           </Menu.Item>
           <Menu.Item key="pups" icon={<EnvironmentOutlined />}>
-            PickUpPoints (paradinha)
+            PickUpPoints
+          </Menu.Item>
+          <Menu.Item key="esellers" icon={<EnvironmentOutlined />}>
+            eSellers
           </Menu.Item>
           <SubMenu key="sub1" icon={<LaptopOutlined />} title="Submenu 1">
             <Menu.Item key="option1">Option 1</Menu.Item>
@@ -61,13 +68,13 @@ function App() {
         height: '100vh',
       }}>
         <Content style={{
-          margin: '24px 16px',
           minWidth: '80%',
         }}>
           {selectedItem === 'homepage' && <HomePage />}
           {selectedItem === 'deliveries' && <DeliveryDashboard />}
-          {selectedItem === 'pups' && <h1>Option 1 Content</h1>}
-          {selectedItem === 'stats' && <h1>Option 2 Content</h1>}
+          {selectedItem === 'pups' && <PickUpPointsDashboard />}
+          {selectedItem === 'esellers' && <SellersDashboard />}
+          {selectedItem === 'stats' && <h1>Stats :)</h1>}
           {selectedItem === 'option1' && <h1>Option 1 Content</h1>}
           {selectedItem === 'option2' && <h1>Option 2 Content</h1>}
         </Content>

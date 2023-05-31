@@ -6,7 +6,9 @@ const { Title, Paragraph } = Typography;
 
 const HomePage = () => {
   return (
-      <div style={{ textAlign: 'center' }}>
+      <div style={{ 
+        textAlign: 'center',
+      }}>
         <Title>Welcome to Take It Easy</Title>
         <Paragraph>
           We make delivery fast and hassle-free.

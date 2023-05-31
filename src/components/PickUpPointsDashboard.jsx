@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios'
 import { Table, Typography } from 'antd'
+import axios from 'axios'
+import NewPickUpPoint from './PickUpPointsDashboard/NewPickUpPoint';
+
 
 const client = axios.create({
     baseURL: 'http://localhost:8080/api/v1/',
@@ -8,7 +10,7 @@ const client = axios.create({
 
 const { Title, Paragraph } = Typography;
 
-function DeliveryDashboard() {
+function PickUpPointsDashboard() {
     const columns = [
         {
             title: 'Delivery ID',
@@ -98,9 +100,9 @@ function DeliveryDashboard() {
       
     const [data, setData] = useState(dataSource);
     const fetchData = async () => {
-        const response = await client.get('/deliveries/');
+        const response = await client.get('/pickuppoints/');
         setData(response.data);
-        console.log(response.data); 
+        console.log(response.data);
     };
 
     useEffect(() => {
@@ -111,7 +113,8 @@ function DeliveryDashboard() {
       <div style={{
         textAlign: 'center',
       }}> 
-        <Title level={1}>[ Deliveries ]</Title>
+        <Title level={1}>[ PickUpPoints ]</Title>
+        <NewPickUpPoint />
         <Table 
             columns={columns}
             dataSource={data}
@@ -128,4 +131,4 @@ function DeliveryDashboard() {
     )
 }
 
-export default DeliveryDashboard
+export default PickUpPointsDashboard
