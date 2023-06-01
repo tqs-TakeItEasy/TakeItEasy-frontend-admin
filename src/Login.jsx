@@ -27,7 +27,7 @@ function Login({ onFinish }) {
                 </Form.Item>
 
                 <Form.Item>
-                    <Button type="primary" htmlType="submit" block>
+                    <Button type="primary" htmlType="submit" block data-testId="submitButton">
                         Log In
                     </Button>
                 </Form.Item>

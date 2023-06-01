@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import App from './App';
 import '@testing-library/jest-dom'
 
@@ -26,7 +26,7 @@ describe('<App />', () => {
         expect(app).toBeInTheDocument();
     });
 
-    test('i should be able to login', () => {
+    test('i should be able to login', async () => {
         render(<App />);
 
         const login = screen.getByTestId('Login');
@@ -38,11 +38,13 @@ describe('<App />', () => {
         fireEvent.change(username, { target: { value: 'admin@takeiteasy.pt' } });
         fireEvent.change(password, { target: { value: 'adminGOAT_7RONALDO' } });
 
-        const submitButton = screen.getByText('Log in');
-        fireEvent.click(submitButton);
+        const submitButton = screen.getByTestId('submitButton');
+        fireEvent.submit(submitButton);
 
-        const homePage = screen.getByTestId('HomePage');
-        expect(homePage).toBeInTheDocument();
+        await waitFor(() => {
+            const homePage = screen.getByTestId('HomePage');
+            expect(homePage).toBeInTheDocument();
+        });
     });
 });
 
