@@ -8,10 +8,10 @@ import {
   ProjectOutlined,
 } from '@ant-design/icons';
 
-import HomePage from './components/HomePage';
-import DeliveryDashboard from './components/DeliveryDashboard'
-import PickUpPointsDashboard from './components/PickUpPointsDashboard';
-import SellersDashboard from './components/SellersDashboard';
+import HomePage from './components/HomePage/HomePage';
+import DeliveryDashboard from './components/DeliveryDashboard/DeliveryDashboard'
+import PickUpPointsDashboard from './components/PickUpPointsDashboard/PickUpPointsDashboard';
+import SellersDashboard from './components/SellersDashboard/SellersDashboard';
 
 import './App.css'
 // import reactLogo from './assets/react.svg'
@@ -58,7 +58,6 @@ function App() {
             Stats (?)
           </Menu.Item>
         </Menu>
-
       </Header>
       <Content
         style={{

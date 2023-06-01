@@ -104,6 +104,7 @@ function DeliveryDashboard() {
                     transform: 'translate(-50%)',
                     paddingTop: '3em',
                 }}
+                data-testid="DeliveryDashboard"
             />
         </div>
     )
