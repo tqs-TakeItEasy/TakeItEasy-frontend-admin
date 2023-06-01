@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios'
 import { Table, Typography, Button } from 'antd'
@@ -57,9 +58,9 @@ function DeliveryDashboard() {
             title: 'Action',
             key: 'action',
             render: (_, record) => (
-                <Button type="default" onClick={() => {
-                    console.log(record + "DELETE HERE MAKE THIS TODO AHAHAH");
-                    // axios.delete(`http://localhost:8080/api/v1/deliveries/${record.deliveryId}`)
+                <Button type="default" onClick={ async () => {
+                    const r = await axios.delete(`http://localhost:8080/api/v1/deliveries/${record.deliveryId}/`)
+                    fetchData();
                 }}>
                     <DeleteOutlined />
                 </Button>
@@ -79,7 +80,6 @@ function DeliveryDashboard() {
             "registryDate": delivery.registeryDate,
         }));
         setData(newData);
-        console.log(newData);
     };
 
     useEffect(() => {
@@ -90,12 +90,14 @@ function DeliveryDashboard() {
         <div style={{
             textAlign: 'center',
         }}>
+            <Title level={2}>[ Deliveries ]</Title>
+
             <Table
                 columns={columns}
                 dataSource={data}
                 pagination={{
                     pageSize: 10,
-                    position: ['bottomCenter'],
+                    position: ['bottomRight'],
                 }}
                 style={{
                     width: '90%',
