@@ -185,6 +185,7 @@ function PickUpPointsDashboard() {
           transform: 'translate(-50%)',
           paddingTop: '3em',
         }}
+        data-testid="PickUpPointsDashboard"
       />
     </div>
   )

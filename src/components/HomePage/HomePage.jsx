@@ -1,4 +1,3 @@
-import React from 'react';
 import { Typography, Button } from 'antd';
 import { RocketOutlined } from '@ant-design/icons';
 
@@ -10,7 +9,7 @@ const HomePage = () => {
       textAlign: 'center',
     }}>
       <Title>Welcome to Take It Easy</Title>
-      <Paragraph>
+      <Paragraph data-testid="HomePage">
         We make delivery fast and hassle-free.
         <br />
         With Take It Easy, you can send and receive packages with ease.
