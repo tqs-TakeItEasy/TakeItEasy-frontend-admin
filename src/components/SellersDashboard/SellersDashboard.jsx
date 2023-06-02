@@ -1,11 +1,14 @@
+import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios'
-import { Table, Button, Modal, Form, Input } from 'antd'
+import { Table, Button, Modal, Form, Input, Typography } from 'antd'
 
 import { DeleteOutlined } from '@ant-design/icons';
 
+const { Title } = Typography;
+
 const client = axios.create({
-  baseURL: 'http://localhost:8080/api/v1/',
+  baseURL: 'https://takeiteasy-backend-6hmgm4lh5a-no.a.run.app/api/v1',
 });
 
 
@@ -45,7 +48,6 @@ function SellersDashboard() {
   const fetchData = async () => {
     const response = await client.get('/stores/');
     setData(response.data);
-    console.log(response.data);
   };
 
   useEffect(() => {
@@ -64,7 +66,7 @@ function SellersDashboard() {
     setConfirmLoading(true);
 
     values["companyId"] = 1;
-    await axios.post('http://localhost:8080/api/v1/stores/add/', values);
+    await client.post('/stores/add/', values);
     setConfirmLoading(false);
     setOpen(false);
     fetchData();
@@ -81,9 +83,7 @@ function SellersDashboard() {
     <div style={{
       textAlign: 'center',
     }}>
-      <Button type="primary" onClick={showModal}>
-        Add a new eSeller
-      </Button>
+      <Title level={2}>[ eSellers ]</Title>
       <Modal
         title="New eSeller"
         open={open}
@@ -153,7 +153,7 @@ function SellersDashboard() {
         dataSource={data}
         pagination={{
           pageSize: 10,
-          position: ['bottomCenter'],
+          position: ['bottomRight'],
         }}
         style={{
           width: '90%',
@@ -162,7 +162,11 @@ function SellersDashboard() {
           transform: 'translate(-50%)',
           paddingTop: '3em',
         }}
+        data-testid="SellersDashboard"
       />
+      <Button type="primary" onClick={showModal}>
+        Add a new eSeller
+      </Button>
     </div>
   )
 }

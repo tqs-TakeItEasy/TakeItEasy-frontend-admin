@@ -1,17 +1,20 @@
+import React from 'react';
 import { useState } from 'react'
-import { Layout, Menu, Form, Input, Button } from 'antd';
+import { Layout, Menu } from 'antd';
 
 import {
   HomeOutlined,
   ContainerOutlined,
   EnvironmentOutlined,
   ProjectOutlined,
+  ShoppingCartOutlined,
 } from '@ant-design/icons';
 
 import HomePage from './components/HomePage/HomePage';
 import DeliveryDashboard from './components/DeliveryDashboard/DeliveryDashboard'
 import PickUpPointsDashboard from './components/PickUpPointsDashboard/PickUpPointsDashboard';
 import SellersDashboard from './components/SellersDashboard/SellersDashboard';
+import Login from './Login';
 
 import './App.css'
 // import reactLogo from './assets/react.svg'
@@ -32,39 +35,8 @@ function App() {
   };
 
   return (
-    <div>
-      {!loggedIn &&
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: '#9CB4CC' }}>
-          <Form
-            name="loginForm"
-            onFinish={onFinish}
-            style={{ maxWidth: 300, margin: '0 auto' }}
-          >
-            <img src="/takeiteasy.png" alt="logo" width={"100%"} style={{
-              transform: "scale(2)",
-              translate: "0% -60%",
-            }} />
-            <Form.Item
-              name="username"
-              rules={[{ required: true, message: 'Please enter your username!' }]}
-            >
-              <Input placeholder="Username" />
-            </Form.Item>
-            <Form.Item
-              name="password"
-              rules={[{ required: true, message: 'Please enter your password!' }]}
-            >
-              <Input.Password placeholder="Password" />
-            </Form.Item>
-
-            <Form.Item>
-              <Button type="primary" htmlType="submit" block>
-                Log In
-              </Button>
-            </Form.Item>
-          </Form>
-        </div>
-      }
+    <div data-testId="App">
+      {!loggedIn && <Login onFinish={onFinish} />}
       {loggedIn &&
         <Layout style={{ minHeight: '100vh' }}>
           <Header
@@ -90,11 +62,11 @@ function App() {
               <Menu.Item key="pups" icon={<EnvironmentOutlined />}>
                 PickUpPoints
               </Menu.Item>
-              <Menu.Item key="esellers" icon={<EnvironmentOutlined />}>
+              <Menu.Item key="esellers" icon={<ShoppingCartOutlined />}>
                 eSellers
               </Menu.Item>
               <Menu.Item key="stats" icon={<ProjectOutlined />}>
-                Stats (?)
+                Stats
               </Menu.Item>
             </Menu>
           </Header>
@@ -108,7 +80,7 @@ function App() {
             {selectedItem === 'deliveries' && <DeliveryDashboard />}
             {selectedItem === 'pups' && <PickUpPointsDashboard />}
             {selectedItem === 'esellers' && <SellersDashboard />}
-            {selectedItem === 'stats' && <h1>Stats :o</h1>}
+            {selectedItem === 'stats' && <h1>TODO</h1>}
           </Content>
         </Layout>
       }

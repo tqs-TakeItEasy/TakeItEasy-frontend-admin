@@ -1,13 +1,17 @@
+import React from 'react';
 import { useState, useEffect } from 'react';
-import { Table, Button, Modal, Form, Input } from 'antd'
+import { Table, Button, Modal, Form, Input, Typography } from 'antd'
 
 import { DeleteOutlined } from '@ant-design/icons';
 
 import axios from 'axios'
 
+const { Title } = Typography;
+
 const client = axios.create({
-  baseURL: 'http://localhost:8080/api/v1/',
+  baseURL: 'https://takeiteasy-backend-6hmgm4lh5a-no.a.run.app/api/v1',
 });
+
 
 function PickUpPointsDashboard() {
   const columns = [
@@ -42,7 +46,7 @@ function PickUpPointsDashboard() {
       key: 'action',
       render: (_, record) => (
         <Button type="default" onClick={async () => {
-          const r = await axios.delete(`http://localhost:8080/api/v1/pickuppoints/${record.id}/`)
+          const r = await client.delete(`/pickuppoints/${record.id}/`)
           fetchData();
         }}>
           <DeleteOutlined />
@@ -91,9 +95,7 @@ function PickUpPointsDashboard() {
     <div style={{
       textAlign: 'center',
     }}>
-      <Button type="primary" onClick={showModal}>
-        Add a new PickUpPoint
-      </Button>
+      <Title level={2}>[ PickUpPoints ]</Title>
       <Modal
         title="New PickUpPoint"
         open={open}
@@ -130,7 +132,7 @@ function PickUpPointsDashboard() {
               },
             ]}
           >
-            <Input />
+            <Input placeholder='Name' />
           </Form.Item>
 
           <Form.Item
@@ -143,7 +145,7 @@ function PickUpPointsDashboard() {
               },
             ]}
           >
-            <Input />
+            <Input placeholder='Address' />
           </Form.Item>
 
           <Form.Item
@@ -156,7 +158,7 @@ function PickUpPointsDashboard() {
               },
             ]}
           >
-            <Input />
+            <Input placeholder='Email' />
           </Form.Item>
 
           <Form.Item
@@ -165,7 +167,7 @@ function PickUpPointsDashboard() {
               span: 16,
             }}
           >
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" data-testId='submitButton'>
               Submit
             </Button>
           </Form.Item>
@@ -176,7 +178,7 @@ function PickUpPointsDashboard() {
         dataSource={data}
         pagination={{
           pageSize: 10,
-          position: ['bottomCenter'],
+          position: ['bottomRight'],
         }}
         style={{
           width: '90%',
@@ -185,8 +187,11 @@ function PickUpPointsDashboard() {
           transform: 'translate(-50%)',
           paddingTop: '3em',
         }}
-        data-testid="PickUpPointsDashboard"
+        data-testId="PickUpPointsDashboard"
       />
+      <Button type="primary" onClick={showModal} data-testId='addPickUpPointButton'>
+        Add a new PickUpPoint
+      </Button>
     </div>
   )
 }

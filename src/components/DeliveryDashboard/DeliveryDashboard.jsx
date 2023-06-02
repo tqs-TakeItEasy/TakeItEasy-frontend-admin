@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios'
 import { Table, Typography, Button } from 'antd'
@@ -5,7 +6,7 @@ import { Table, Typography, Button } from 'antd'
 import { DeleteOutlined } from '@ant-design/icons';
 
 const client = axios.create({
-    baseURL: 'http://localhost:8080/api/v1/',
+    baseURL: 'https://takeiteasy-backend-6hmgm4lh5a-no.a.run.app/api/v1',
 });
 
 const { Title } = Typography;
@@ -57,9 +58,9 @@ function DeliveryDashboard() {
             title: 'Action',
             key: 'action',
             render: (_, record) => (
-                <Button type="default" onClick={() => {
-                    console.log(record + "DELETE HERE MAKE THIS TODO AHAHAH");
-                    // axios.delete(`http://localhost:8080/api/v1/deliveries/${record.deliveryId}`)
+                <Button type="default" onClick={ async () => {
+                    const r = await client.delete(`/deliveries/${record.deliveryId}/`);
+                    fetchData();
                 }}>
                     <DeleteOutlined />
                 </Button>
@@ -79,7 +80,6 @@ function DeliveryDashboard() {
             "registryDate": delivery.registeryDate,
         }));
         setData(newData);
-        console.log(newData);
     };
 
     useEffect(() => {
@@ -90,12 +90,14 @@ function DeliveryDashboard() {
         <div style={{
             textAlign: 'center',
         }}>
+            <Title level={2}>[ Deliveries ]</Title>
+
             <Table
                 columns={columns}
                 dataSource={data}
                 pagination={{
                     pageSize: 10,
-                    position: ['bottomCenter'],
+                    position: ['bottomRight'],
                 }}
                 style={{
                     width: '90%',
@@ -110,4 +112,4 @@ function DeliveryDashboard() {
     )
 }
 
-export default DeliveryDashboard
+export default DeliveryDashboard;

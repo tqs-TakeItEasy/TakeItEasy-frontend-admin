@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import DeliveryDashboard from './DeliveryDashboard';
+import Login from './Login';
 import '@testing-library/jest-dom'
 
 Object.defineProperty(window, 'matchMedia', {
@@ -17,19 +17,13 @@ Object.defineProperty(window, 'matchMedia', {
     })),
 });
 
-describe('<DeliveryDashboard />', () => {
-    test('check deliveries', () => {
-        render(<DeliveryDashboard />);
+describe('<Login />', () => {
+    test('it should mount', () => {
+        render(<Login />);
 
-        const deliveryDashboard = screen.getByTestId('DeliveryDashboard');
-
-        expect(deliveryDashboard).toBeInTheDocument();
+        const login = screen.getByTestId('Login');
+        
+        expect(login).toBeInTheDocument();
     });
-
-    test.todo('cancel delivery') //, () => {
-        // render(<DeliveryDashboard />);
-        // const deliveryDashboard = screen.getByTestId('DeliveryDashboard');
-        // expect(deliveryDashboard).toBeInTheDocument();
-    // });
 });
 
