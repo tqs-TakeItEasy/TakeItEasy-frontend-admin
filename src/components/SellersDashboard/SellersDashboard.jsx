@@ -8,7 +8,7 @@ import { DeleteOutlined } from '@ant-design/icons';
 const { Title } = Typography;
 
 const client = axios.create({
-  baseURL: 'http://localhost:8080/api/v1/',
+  baseURL: 'https://takeiteasy-backend-6hmgm4lh5a-no.a.run.app/api/v1',
 });
 
 
@@ -66,7 +66,7 @@ function SellersDashboard() {
     setConfirmLoading(true);
 
     values["companyId"] = 1;
-    await axios.post('http://localhost:8080/api/v1/stores/add/', values);
+    await client.post('/stores/add/', values);
     setConfirmLoading(false);
     setOpen(false);
     fetchData();

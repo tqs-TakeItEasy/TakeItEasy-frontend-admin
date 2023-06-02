@@ -18,12 +18,18 @@ Object.defineProperty(window, 'matchMedia', {
 });
 
 describe('<DeliveryDashboard />', () => {
-    test('it should mount', () => {
+    test('check deliveries', () => {
         render(<DeliveryDashboard />);
 
         const deliveryDashboard = screen.getByTestId('DeliveryDashboard');
 
         expect(deliveryDashboard).toBeInTheDocument();
     });
+
+    test.todo('cancel delivery') //, () => {
+        // render(<DeliveryDashboard />);
+        // const deliveryDashboard = screen.getByTestId('DeliveryDashboard');
+        // expect(deliveryDashboard).toBeInTheDocument();
+    // });
 });
 

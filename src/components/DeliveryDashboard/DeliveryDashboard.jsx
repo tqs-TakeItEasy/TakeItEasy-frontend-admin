@@ -6,7 +6,7 @@ import { Table, Typography, Button } from 'antd'
 import { DeleteOutlined } from '@ant-design/icons';
 
 const client = axios.create({
-    baseURL: 'http://localhost:8080/api/v1/',
+    baseURL: 'https://takeiteasy-backend-6hmgm4lh5a-no.a.run.app/api/v1',
 });
 
 const { Title } = Typography;
@@ -59,7 +59,7 @@ function DeliveryDashboard() {
             key: 'action',
             render: (_, record) => (
                 <Button type="default" onClick={ async () => {
-                    const r = await axios.delete(`http://localhost:8080/api/v1/deliveries/${record.deliveryId}/`)
+                    const r = await client.delete(`/deliveries/${record.deliveryId}/`);
                     fetchData();
                 }}>
                     <DeleteOutlined />
@@ -112,4 +112,4 @@ function DeliveryDashboard() {
     )
 }
 
-export default DeliveryDashboard
+export default DeliveryDashboard;
