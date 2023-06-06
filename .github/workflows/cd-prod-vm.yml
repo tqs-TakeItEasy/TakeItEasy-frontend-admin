@@ -1,0 +1,28 @@
+name: Continuous Deployment VM
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: SSH into the VM and deploy
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.VM_HOST }}
+        username: ${{ secrets.VM_USERNAME }}
+        password: ${{ secrets.VM_PASSWD }}
+        script: |
+          cd ~/admin-runner/_work/TakeItEasy-frontend-admin/TakeItEasy-frontend-admin
+          # Build and run the Docker image on the VM
+          docker build -t takeiteasy-frontend-admin .
+          docker stop tie-frontend-admin || true
+          docker rm tie-frontend-admin || true
+          docker run -d --name tie-frontend-admin -p 3001:4173 takeiteasy-frontend-admin
