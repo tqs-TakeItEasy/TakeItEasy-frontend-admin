@@ -25,4 +25,4 @@ jobs:
           docker build -t takeiteasy-frontend-admin .
           docker stop tie-frontend-admin || true
           docker rm tie-frontend-admin || true
-          docker run -d --name tie-frontend-admin -p 3001:3000 takeiteasy-frontend-admin
+          docker run -d --name tie-frontend-admin -p 3001:4173 takeiteasy-frontend-admin
