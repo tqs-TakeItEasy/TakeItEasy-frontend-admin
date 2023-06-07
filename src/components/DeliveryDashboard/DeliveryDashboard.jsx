@@ -6,7 +6,7 @@ import { Table, Typography, Button } from 'antd'
 import { DeleteOutlined } from '@ant-design/icons';
 
 const client = axios.create({
-    baseURL: 'https://takeiteasy-backend-6hmgm4lh5a-no.a.run.app/api/v1',
+    baseURL: 'http://deti-tqs-11.ua.pt:8080/api/v1',
 });
 
 const { Title } = Typography;

@@ -8,7 +8,7 @@ import { DeleteOutlined } from '@ant-design/icons';
 const { Title } = Typography;
 
 const client = axios.create({
-  baseURL: 'https://takeiteasy-backend-6hmgm4lh5a-no.a.run.app/api/v1',
+  baseURL: 'http://deti-tqs-11.ua.pt:8080/api/v1',
 });
 
 
